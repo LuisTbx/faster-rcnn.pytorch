@@ -215,9 +215,8 @@ Specify the specific model session, chechepoch and checkpoint, e.g., SESSION=1, 
 
 If you want to run detection on your own images with a pre-trained model, download the pretrained model listed in above tables or train your own models at first, then add images to folder $ROOT/images, and then run
 ```
-python demo.py --net vgg16 \
-               --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT \
-               --cuda --load_dir path/to/model/directoy
+python demo.py --net res101 --checksession 1 --checkepoch 12 --checkpoint 416 --cuda --load_dir model/
+			   
 ```
 
 Then you will find the detection results in folder $ROOT/images.
@@ -234,10 +233,7 @@ Below are some detection results:
 
 You can use a webcam in a real-time demo by running
 ```
-python demo.py --net vgg16 \
-               --checksession $SESSION --checkepoch $EPOCH --checkpoint $CHECKPOINT \
-               --cuda --load_dir path/to/model/directoy \
-               --webcam $WEBCAM_ID
+python demo.py --net res101 --checksession 1 --checkepoch 12 --checkpoint 416 --cuda --load_dir path/to/model/directoy --webcam $WEBCAM_ID
 ```
 The demo is stopped by clicking the image window and then pressing the 'q' key.
 

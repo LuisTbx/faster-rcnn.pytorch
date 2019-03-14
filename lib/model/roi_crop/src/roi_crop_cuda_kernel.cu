@@ -1,6 +1,6 @@
 #include <stdbool.h>
 #include <stdio.h>
-#include "roi_crop_cuda_kernel.h"
+#include "roi_crop_cuda_kernel.hpp"
 
 #define real float
 

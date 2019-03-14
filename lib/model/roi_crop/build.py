@@ -1,19 +1,19 @@
 from __future__ import print_function
 import os
 import torch
-from torch.utils.ffi import create_extension
+from torch.utils.cpp_extension import CppExtension, BuildExtension
 
 #this_file = os.path.dirname(__file__)
 
-sources = ['src/roi_crop.c']
-headers = ['src/roi_crop.h']
+sources = ['src/roi_crop.cpp']
+headers = ['src/roi_crop.hpp']
 defines = []
 with_cuda = False
 
 if torch.cuda.is_available():
     print('Including CUDA code.')
-    sources += ['src/roi_crop_cuda.c']
-    headers += ['src/roi_crop_cuda.h']
+    sources += ['src/roi_crop_cuda.cpp']
+    headers += ['src/roi_crop_cuda.hpp']
     defines += [('WITH_CUDA', None)]
     with_cuda = True
 
@@ -22,7 +22,8 @@ print(this_file)
 extra_objects = ['src/roi_crop_cuda_kernel.cu.o']
 extra_objects = [os.path.join(this_file, fname) for fname in extra_objects]
 
-ffi = create_extension(
+
+ffi = CppExtension(
     '_ext.roi_crop',
     headers=headers,
     sources=sources,

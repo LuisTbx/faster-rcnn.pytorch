@@ -108,13 +108,6 @@ Then, create a folder:
 cd faster-rcnn.pytorch && mkdir data
 ```
 
-Now, install pycocotools (taken from: https://github.com/philferriere/cocoapi):
-```
-cd thrid_party/cocoapi/PythonAPI
-python setup.py build
-python setup.py install
-```
-
 ### prerequisites
 
 * Python 2.7 or 3.6
@@ -158,11 +151,12 @@ Install Visual Studio 2017. Be sure to set VS2017 compiler on mode X64
 "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
 ```
 
-We can now build pycocotools for windows
+Now, install pycocotools (taken from: https://github.com/philferriere/cocoapi):
 ```
-cd third_party/cocoapi/PythonAPI
+cd thrid_party\cocoapi\PythonAPI
 python setup.py build
 python setup.py install
+cd ..\..\..
 ```
 
 Compile the cuda dependencies using following simple commands:
